@@ -50,4 +50,35 @@ public class Nodo <E>{
         return resultado;
     }
 
+    public void setEtiqueta(String etiqueta) {
+        Etiqueta = etiqueta;
+    }
+
+    public void setDerecho(Nodo<E> derecho) {
+        this.derecho = derecho;
+    }
+
+    public void setIzquierdo(Nodo<E> izquierdo) {
+        this.izquierdo = izquierdo;
+    }
+
+    public void setDato(E dato) {
+        this.dato = dato;
+    }
+
+    public String getEtiqueta() {
+        return Etiqueta;
+    }
+
+    public Nodo<E> getDerecho() {
+        return derecho;
+    }
+
+    public Nodo<E> getIzquierdo() {
+        return izquierdo;
+    }
+
+    public E getDato() {
+        return dato;
+    }
 }
