@@ -1,6 +1,6 @@
 package org.tercerparcial.arbolbin.Pila;
 
-import ListaSimple.Listasimple;
+import org.tercerparcial.arbolbin.ListaSimple.Listasimple;
 
 
 

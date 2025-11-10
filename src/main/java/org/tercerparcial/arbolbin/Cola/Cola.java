@@ -1,6 +1,6 @@
 package org.tercerparcial.arbolbin.Cola;
 
-import ListaSimple.Listasimple;
+import org.tercerparcial.arbolbin.ListaSimple.Listasimple;
 
 
 

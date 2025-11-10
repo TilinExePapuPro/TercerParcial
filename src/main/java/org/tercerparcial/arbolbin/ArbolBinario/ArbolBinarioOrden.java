@@ -1,6 +1,6 @@
 package org.tercerparcial.arbolbin.ArbolBinario;
 
-import Cola.Cola;
+import org.tercerparcial.arbolbin.Cola.Cola;
 
 
 
