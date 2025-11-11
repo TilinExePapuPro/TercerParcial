@@ -1,21 +1,13 @@
-package fes.aragon.ejercicio1;
+package fes.aragon.ejercicio1.Controllers;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import fes.aragon.ejercicio1.ArbolBinario.ArbolBinarioOrden;
-import fes.aragon.ejercicio1.ArbolBinario.InfoNodo;
-import fes.aragon.ejercicio1.ArbolBinario.Nodo;
-import fes.aragon.ejercicio1.ListaDoble.ListaDoble;
-
+import ArbolBinario.ArbolBinarioOrden;
+import ArbolBinario.Nodo;
 import java.io.File;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class ArbolController {
 
@@ -39,7 +31,7 @@ public class ArbolController {
                 try {
                     int valor = Integer.parseInt(d.trim());
                     arbol.insertar(valor);
-                    //System.out.println("Insertado: " + valor);
+
 
                 } catch (NumberFormatException ex) {
                     System.out.println("Ignorado por no ser entero: " + d);
@@ -55,7 +47,6 @@ public class ArbolController {
             if (arbol != null){
                 arbol.insertar(Integer.valueOf(campoTexto.getText()));
                 graficarArbol();
-                //System.out.println("Dato insertado: " + Integer.valueOf(campoTexto.getText()));
             }
         }catch (Exception e){
             Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -137,12 +128,11 @@ public class ArbolController {
         if (nodo == null)
             return;
 
-        // DIBUJAR CÍRCULO
+
         javafx.scene.shape.Circle c = new javafx.scene.shape.Circle(x, y, 18);
         c.setStyle("-fx-fill: #38C72C; -fx-stroke: #12911A; -fx-stroke-width: 2;");
 
 
-        // DIBUJAR HIJO IZQUIERDO
         if (nodo.getIzquierdo() != null) {
             javafx.scene.shape.Line linea = new javafx.scene.shape.Line(x, y, x - offset, y + 60);
             linea.setStyle("-fx-fill: #BD5E34; -fx-stroke: #BD5E34; -fx-stroke-width: 2;");
@@ -150,7 +140,6 @@ public class ArbolController {
             arbolPanel.getChildren().add(linea);
         }
 
-        // DIBUJAR HIJO DERECHO
         if (nodo.getDerecho() != null) {
             javafx.scene.shape.Line linea = new javafx.scene.shape.Line(x, y, x + offset, y + 60);
             linea.setStyle("-fx-fill: #BD5E34; -fx-stroke: #BD5E34; -fx-stroke-width: 2;");
@@ -158,7 +147,6 @@ public class ArbolController {
             arbolPanel.getChildren().add(linea);
         }
 
-        // DIBUJAR TEXTO
         javafx.scene.text.Text t = new javafx.scene.text.Text(x - 5, y + 5, nodo.getDato().toString());
 
         arbolPanel.getChildren().addAll(c, t);
@@ -171,17 +159,5 @@ public class ArbolController {
         }
     }
 
-    private void botonGuardarEnArchivo(File archivo) {
-        try {
-            String contenidoAGuardar = arbol.aTexto();
-            java.nio.file.Files.write(archivo.toPath(), contenidoAGuardar.getBytes());
-            System.out.println("Árbol guardado en: " + archivo.getAbsolutePath());
-        } catch (Exception e) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error al guardar archivo");
-            alerta.setHeaderText("No se pudo guardar el árbol");
-            alerta.setContentText(e.getMessage());
-            alerta.show();
-        }
-    }
+
 }
