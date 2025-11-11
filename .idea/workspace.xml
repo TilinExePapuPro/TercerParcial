@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2bd01645-c3e5-414d-9b9e-46e519d03f0d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/ArbolBinario/ArbolBinarioOrden.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/ArbolBinario/Nodo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/ArbolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/Controllers/ArbolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/Cola/Cola.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/ListaDoble/ListaDoble.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/ListaDoble/Nodo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/ListaSimple/Listasimple.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/ListaSimple/Nodo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/Pila/EjerciciosPila.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tercerparcial/arbolbin/Pila/Pila.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/tercerparcial/arbolbin/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/tercerparcial/arbolbin/Arbol-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/ArbolBinario/ArbolBinarioOrden.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/ArbolBinario/Nodo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/ArbolController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/Cola/Cola.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/Launcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/ListaDoble/ListaDoble.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/ListaDoble/Nodo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/ListaSimple/Listasimple.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/ListaSimple/Nodo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/Pila/EjerciciosPila.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/Pila/Pila.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/tercerparcial/arbolbin/hello-view.fxml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ArielGrx9&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/TilinExePapuPro/TercerParcial.git&quot;,
+    &quot;accountId&quot;: &quot;cbc94e0c-860d-4846-8fb7-ba3fdcab3c58&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="35Gb4u5N4kGpiYjI9VRrf8Rq0aY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Launcher.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Ejercicio-5",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/OBRA_/IdeaProjects/ArbolBin",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OBRA_\IdeaProjects\ArbolBin\src\main\java\org\tercerparcial\arbolbin" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2bd01645-c3e5-414d-9b9e-46e519d03f0d" name="Changes" comment="" />
+      <created>1762739171150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762739171150</updated>
+    </task>
+    <servers />
+  </component>
+</project>

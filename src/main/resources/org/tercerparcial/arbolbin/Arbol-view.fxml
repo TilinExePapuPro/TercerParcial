@@ -2,11 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.tercerparcial.arbolbin.ArbolController"
+            fx:controller="org.tercerparcial.arbolbin.Controllers.ArbolController"
             prefWidth="600" prefHeight="500">
 
    <children>
@@ -20,7 +19,11 @@
       <Button text="Evaluar" layoutX="320" layoutY="100" prefWidth="100"
               onAction="#presionarBotonEvaluar"/>
 
-      <Pane fx:id="arbolPanel" layoutX="50" layoutY="160" prefWidth="500" prefHeight="300"
-            style="-fx-background-color: #f5f5f5; -fx-border-color: #ccc;"/>
+       <ScrollPane fx:id="scrollPane" layoutX="50" layoutY="160" prefWidth="500" prefHeight="300">
+           <content>
+               <Pane fx:id="arbolPanel" prefWidth="1000" prefHeight="800"
+                     style="-fx-background-color: #f5f5f5; -fx-border-color: #ccc;"/>
+           </content>
+       </ScrollPane>
    </children>
 </AnchorPane>

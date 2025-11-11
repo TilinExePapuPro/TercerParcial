@@ -1,4 +1,4 @@
-package org.tercerparcial.arbolbin;
+package org.tercerparcial.arbolbin.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import org.tercerparcial.arbolbin.ArbolBinario.Nodo;
+import ArbolBinario.Nodo;
 import java.util.Stack;
 
 public class ArbolController {
@@ -20,9 +20,6 @@ public class ArbolController {
 
     private Nodo<String> raizActual;
 
-    // -----------------------------
-    // BOTÓN: DIBUJAR ÁRBOL
-    // -----------------------------
     @FXML
     public void presionarBotonDibujar() {
         try {
@@ -32,22 +29,23 @@ public class ArbolController {
                 return;
             }
 
-            // 1️⃣ Convertir infija a postfija
             String postfija = infijaAPostfija(infija);
-
-            // 2️⃣ Construir árbol desde postfija
             raizActual = construirArbol(postfija);
             arbolPanel.getChildren().clear();
-            dibujarNodo(raizActual, arbolPanel.getWidth() / 2, 40, arbolPanel.getWidth() / 4);
+            int altura = calcularAltura(raizActual);
+
+            double anchoPanel = arbolPanel.getWidth();
+            double offsetInicial = Math.max(anchoPanel / (Math.pow(2, altura - 1)), 60);
+
+            double anchoInicial = Math.max(arbolPanel.getWidth() / (Math.pow(2, altura - 1)), 40);
+            dibujarNodo(raizActual, arbolPanel.getWidth() / 2, 40, anchoInicial);
+
 
         } catch (Exception e) {
             mostrarAlerta("Error", "Expresión inválida: " + e.getMessage());
         }
     }
 
-    // -----------------------------
-    // BOTÓN: EVALUAR EXPRESIÓN
-    // -----------------------------
     @FXML
     public void presionarBotonEvaluar() {
         if (raizActual == null) {
@@ -59,9 +57,6 @@ public class ArbolController {
         mostrarAlerta("Resultado", "El resultado de la expresión es: " + resultado);
     }
 
-    // -----------------------------
-    // CONVERSIÓN INFIX → POSTFIX
-    // -----------------------------
     private String infijaAPostfija(String exp) {
         StringBuilder salida = new StringBuilder();
         Stack<Character> pila = new Stack<>();
@@ -69,28 +64,21 @@ public class ArbolController {
         for (int i = 0; i < exp.length(); i++) {
             char c = exp.charAt(i);
 
-            // 🧮 Leer números de varias cifras
             if (Character.isDigit(c)) {
                 StringBuilder numero = new StringBuilder();
                 while (i < exp.length() && Character.isDigit(exp.charAt(i))) {
                     numero.append(exp.charAt(i));
                     i++;
                 }
-                i--; // retrocede una posición
+                i--;
                 salida.append(numero).append(' ');
-            }
-            // Paréntesis de apertura
-            else if (c == '(') {
+            } else if (c == '(') {
                 pila.push(c);
-            }
-            // Paréntesis de cierre
-            else if (c == ')') {
+            } else if (c == ')') {
                 while (!pila.isEmpty() && pila.peek() != '(')
                     salida.append(pila.pop()).append(' ');
                 if (!pila.isEmpty()) pila.pop();
-            }
-            // Operadores
-            else if ("+-*/".indexOf(c) != -1) {
+            } else if ("+-*/".indexOf(c) != -1) {
                 while (!pila.isEmpty() && prioridad(pila.peek()) >= prioridad(c))
                     salida.append(pila.pop()).append(' ');
                 pila.push(c);
@@ -107,9 +95,6 @@ public class ArbolController {
         return (op == '+' || op == '-') ? 1 : (op == '*' || op == '/') ? 2 : 0;
     }
 
-    // -----------------------------
-    // CREAR ÁRBOL DESDE POSTFIJA
-    // -----------------------------
     private Nodo<String> construirArbol(String postfija) {
         Stack<Nodo<String>> pila = new Stack<>();
         for (String token : postfija.split("\\s+")) {
@@ -127,9 +112,6 @@ public class ArbolController {
         return pila.pop();
     }
 
-    // -----------------------------
-    // EVALUAR ÁRBOL
-    // -----------------------------
     private double evaluar(Nodo<String> nodo) {
         if (nodo == null)
             return 0;
@@ -150,24 +132,26 @@ public class ArbolController {
         };
     }
 
-    // -----------------------------
-    // DIBUJAR NODOS
-    // -----------------------------
     private void dibujarNodo(Nodo<String> nodo, double x, double y, double offset) {
         if (nodo == null) return;
 
+        double minOffset = 35;
+        double nextOffset = Math.max(offset / 1.8, minOffset);
+
         if (nodo.getIzquierdo() != null) {
-            Line linea = new Line(x, y, x - offset, y + 60);
+            double xIzq = x - nextOffset;
+            Line linea = new Line(x, y, xIzq, y + 60);
             linea.setStyle("-fx-stroke: #BD5E34; -fx-stroke-width: 2;");
             arbolPanel.getChildren().add(linea);
-            dibujarNodo(nodo.getIzquierdo(), x - offset, y + 60, offset / 2);
+            dibujarNodo(nodo.getIzquierdo(), xIzq, y + 60, nextOffset);
         }
 
         if (nodo.getDerecho() != null) {
-            Line linea = new Line(x, y, x + offset, y + 60);
+            double xDer = x + nextOffset;
+            Line linea = new Line(x, y, xDer, y + 60);
             linea.setStyle("-fx-stroke: #BD5E34; -fx-stroke-width: 2;");
             arbolPanel.getChildren().add(linea);
-            dibujarNodo(nodo.getDerecho(), x + offset, y + 60, offset / 2);
+            dibujarNodo(nodo.getDerecho(), xDer, y + 60, nextOffset);
         }
 
         Circle c = new Circle(x, y, 18);
@@ -178,14 +162,21 @@ public class ArbolController {
         arbolPanel.getChildren().addAll(c, t);
     }
 
-    // -----------------------------
-    // ALERTAS
-    // -----------------------------
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle(titulo);
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.show();
+    }
+
+    private int calcularAltura(Nodo<String> nodo) {
+        if (nodo == null) return 0;
+        return 1 + Math.max(calcularAltura(nodo.getIzquierdo()), calcularAltura(nodo.getDerecho()));
+    }
+
+    private int contarNodos(Nodo<String> nodo) {
+        if (nodo == null) return 0;
+        return 1 + contarNodos(nodo.getIzquierdo()) + contarNodos(nodo.getDerecho());
     }
 }

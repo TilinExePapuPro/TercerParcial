@@ -3,10 +3,7 @@ module org.tercerparcial.arbolbin {
     requires javafx.fxml;
 
     requires org.kordamp.bootstrapfx.core;
-    requires  Herramienta;
 
     opens org.tercerparcial.arbolbin to javafx.fxml;
     exports org.tercerparcial.arbolbin;
-    exports org.tercerparcial.arbolbin.Controllers;
-    opens org.tercerparcial.arbolbin.Controllers to javafx.fxml;
 }
