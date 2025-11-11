@@ -64,6 +64,7 @@ public class ArbolBinarioOrden <E>{
             Pila<Nodo<E>> pila = new Pila();
             pila.insertar(this.raiz);
 
+            System.out.println("Preorden: \n");
             while(!pila.estaVacia()) {
                 Nodo<E> actual = (Nodo)pila.extraer();
                 this.imprimir(actual);
@@ -83,6 +84,7 @@ public class ArbolBinarioOrden <E>{
             Pila<Nodo<E>> pila = new Pila();
             Nodo<E> actual;
 
+            System.out.println("Orden: \n");
             for(actual = this.raiz; actual != null || !pila.estaVacia(); actual = actual.derecho) {
                 while(actual != null) {
                     pila.insertar(actual);
@@ -114,6 +116,7 @@ public class ArbolBinarioOrden <E>{
                 }
             }
 
+            System.out.println("Postorden: \n");
             while(!pila2.estaVacia()) {
                 this.imprimir((Nodo)pila2.extraer());
             }
@@ -121,32 +124,37 @@ public class ArbolBinarioOrden <E>{
     }
 
     public void eliminar(E dato) {
+        if (raiz == null) {
+            System.out.println("El árbol está vacío.");
+            return;
+        }
 
-        Nodo<E> tmp;
-        Nodo<E> nodo;
         Nodo<E> n = raiz;
         Nodo<E> previo = null;
 
-        while (n != null && !n.dato.equals(dato)) {
+        while (n != null) {
+            if (n.dato.equals(dato) && n != raiz)
+                break;
+
             previo = n;
-            if (n.mayor(dato)) {
+            if (n.mayor(dato))
                 n = n.derecho;
-            } else {
+            else
                 n = n.izquierdo;
-            }
+
         }
 
         if (n == null) {
-            System.out.println("No se encuentra el dato " + dato);
+            if (raiz.dato.equals(dato))
+                System.out.println("No se puede eliminar la raíz del árbol.");
+            else
+                System.out.println("El dato " + dato + " no se encuentra en el árbol.");
+
             return;
         }
 
-        if (n == raiz) {
-            System.out.println("No se puede eliminar la raíz del árbol.");
-            return;
-        }
-
-        nodo = n;
+        Nodo<E> nodo = n;
+        Nodo<E> tmp;
 
         if (nodo.derecho == null) {
             nodo = nodo.izquierdo;
@@ -161,13 +169,11 @@ public class ArbolBinarioOrden <E>{
             nodo = nodo.izquierdo;
         }
 
-        if (previo.izquierdo == n) {
+        if (previo.izquierdo == n)
             previo.izquierdo = nodo;
-        } else {
+        else if (previo.derecho == n)
             previo.derecho = nodo;
-        }
 
-        System.out.println("Dato eliminado: " + dato);
     }
 
     public String aTexto() {

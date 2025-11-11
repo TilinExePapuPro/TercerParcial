@@ -7,10 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import org.tercerparcial.arbolbin.ArbolBinario.ArbolBinarioOrden;
+import org.tercerparcial.arbolbin.ArbolBinario.InfoNodo;
 import org.tercerparcial.arbolbin.ArbolBinario.Nodo;
+import org.tercerparcial.arbolbin.ListaDoble.ListaDoble;
 
 import java.io.File;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ArbolController {
@@ -22,29 +26,36 @@ public class ArbolController {
 
     private ArbolBinarioOrden<Integer> arbol = new ArbolBinarioOrden<>();
 
-     public void insertarDesdeArchivo(File archivo, ArbolBinarioOrden<Integer> arbol) {
+    public void insertarDesdeArchivo(File archivo, ArbolBinarioOrden<Integer> arbol) {
         try {
             String contenido = new String(java.nio.file.Files.readAllBytes(archivo.toPath()));
 
             String[] datos = contenido.split("\\s+");
 
             for (String d : datos) {
-                if (!d.isEmpty()) {
-                    arbol.insertar(Integer.parseInt(d));
+                if (d == null || d.trim().isEmpty() || d.equalsIgnoreCase("null"))
+                    continue;
+
+                try {
+                    int valor = Integer.parseInt(d.trim());
+                    arbol.insertar(valor);
+                    //System.out.println("Insertado: " + valor);
+
+                } catch (NumberFormatException ex) {
+                    System.out.println("Ignorado por no ser entero: " + d);
                 }
             }
         } catch (Exception e) {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
-
 
     public void presionarBotonInsertar() {
         try{
             if (arbol != null){
                 arbol.insertar(Integer.valueOf(campoTexto.getText()));
                 graficarArbol();
-                System.out.println("Dato insertado: " + Integer.valueOf(campoTexto.getText()));
+                //System.out.println("Dato insertado: " + Integer.valueOf(campoTexto.getText()));
             }
         }catch (Exception e){
             Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -57,15 +68,25 @@ public class ArbolController {
 
     public void presionarBotonEliminar() {
         try{
-            if (arbol != null && arbol.getRaiz() != null) {
-                arbol.eliminar(Integer.valueOf(campoTexto.getText()));
-                graficarArbol();
-                System.out.println("Dato eliminado: " + Integer.valueOf(campoTexto.getText()));
+            Nodo<Integer> n = arbol.getRaiz();
+            if (arbol.getRaiz() == null) {
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error del arbol");
+                alerta.setHeaderText("El arbol está vacío");
+                alerta.setContentText("Necesita crear una raíz");
+                alerta.show();
+                return;
             }
+
+            arbol.eliminar(Integer.valueOf(campoTexto.getText()));
+            graficarArbol();
         }catch (Exception e){
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Error del arbol");
             alerta.setHeaderText("La raiz no existe o se esta intentando eliminar");
+            if (campoTexto.getText().isEmpty()){
+                alerta.setHeaderText("Dato no válido");
+            }
             alerta.setContentText(e.getMessage());
             alerta.show();
         }
